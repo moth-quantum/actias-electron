@@ -13,18 +13,19 @@ const createWindow = async () => {
   await app.whenReady();
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1450,
+    height: 880,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      zoomFactor: 0.9
     },
   });
 
   // and load the index.html of the app.
-  // mainWindow.loadURL(`http://localhost:${5173}`); // use this when running in dev mode
-  await loadURL(mainWindow) /// use this when bundling
+  mainWindow.loadURL(`http://localhost:${5173}`); // use this when running in dev mode
+  // await loadURL(mainWindow) /// use this when bundling
 
-  await mainWindow.loadURL('app://-');
+  // await mainWindow.loadURL('app://-');
 };
 
 // This method will be called when Electron has finished
