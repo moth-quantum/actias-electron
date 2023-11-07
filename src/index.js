@@ -1,12 +1,16 @@
 const { app, BrowserWindow } = require('electron');
+const serve = require("electron-serve"); // TODO: re,ove from nm
 const path = require('path');
+
+const loadURL = serve({directory: './src/q1synth2'});
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
-const createWindow = () => {
+const createWindow = async () => {
+  await app.whenReady();
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
@@ -17,10 +21,10 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'q1synth2/index.html'));
+  // mainWindow.loadURL(`http://localhost:${5173}`); // use this when running in dev mode
+  await loadURL(mainWindow) /// use this when bundling
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  await mainWindow.loadURL('app://-');
 };
 
 // This method will be called when Electron has finished
