@@ -15,6 +15,9 @@ const createWindow = async () => {
   const mainWindow = new BrowserWindow({
     width: 1450,
     height: 880,
+    // center: true,
+    x: 0,
+    y: 0,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       zoomFactor: 0.9
@@ -25,7 +28,16 @@ const createWindow = async () => {
   mainWindow.loadURL(`http://localhost:${5173}`); // use this when running in dev mode
   // await loadURL(mainWindow) /// use this when bundling
 
-  // await mainWindow.loadURL('app://-');
+  // const about = new BrowserWindow({ 
+  //   parent: mainWindow,
+  //   width: 400,
+  //   height: 880,
+  //   x: 0,
+  //   y: 1450
+  // })
+  // about.loadURL(`http://localhost:${5173}/about`)
+  // // child.show()
+  // // mainWindow.show()
 };
 
 // This method will be called when Electron has finished
