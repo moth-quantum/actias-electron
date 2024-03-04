@@ -22,4 +22,5 @@ You can develop this application and the web application concurrently.
 * Ensure that the app will serve the new bundle. In src/index.js, set `isLocalDevelop = false`; 
 * `yarn make` to package up the distributables
 
-
+## Publishing
+TBC
