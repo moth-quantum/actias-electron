@@ -2,6 +2,8 @@ const { app, BrowserWindow } = require('electron');
 const serve = require("electron-serve"); // TODO: re,ove from nm
 const path = require('path');
 
+const isLocalDevelop = false;
+
 const loadURL = serve({directory: './src/q1synth2'});
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -25,8 +27,9 @@ const createWindow = async () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`http://localhost:${5173}`); // use this when running in dev mode
-  // await loadURL(mainWindow) /// use this when bundling
+  isLocalDevelop 
+    ? mainWindow.loadURL(`http://localhost:${5173}`) // use this when running in dev mode
+    : loadURL(mainWindow);
 
   // const about = new BrowserWindow({ 
   //   parent: mainWindow,
