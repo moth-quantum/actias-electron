@@ -1,5 +1,5 @@
 const { app, BrowserWindow, Menu } = require('electron');
-const { mainMenu } = require('./menu');
+const { generateMenu } = require('./menus');
 const serve = require("electron-serve"); // TODO: re,ove from nm
 const path = require('path');
 
@@ -28,7 +28,7 @@ const createWindow = async () => {
     },
   });
 
-  Menu.setApplicationMenu(mainMenu);
+  generateMenu();
 
   // and load the index.html of the app.
   isLocalDevelop 
