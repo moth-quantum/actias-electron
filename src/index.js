@@ -38,6 +38,10 @@ const createWindow = () => {
     ? mainWindow.loadURL(`http://localhost:${5173}`) // use this when running in dev mode
     : loadURL(mainWindow);
 
+  // Open the DevTools.
+  if (isLocalDevelop) {
+    mainWindow.webContents.openDevTools();
+  }
 };
 
 // This method will be called when Electron has finished

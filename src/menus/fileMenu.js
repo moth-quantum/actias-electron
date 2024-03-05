@@ -42,6 +42,7 @@ module.exports.generateFileMenu = ({
                     },
                 ]
             },
+            { label: 'Save Preset', click: () => console.log('save clicked') },
             { label: 'Import Preset', click: () => console.log('import clicked') },
             { label: 'Export preset', click: () => console.log('export clicked') },
             { type: 'separator' },
