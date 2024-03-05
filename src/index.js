@@ -12,11 +12,7 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
-const createWindow = async () => {
-  await app.whenReady(); // todo: do we need this?
-
-  // generate main menu
-  generateMenu();
+const createWindow = () => {
 
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -32,26 +28,22 @@ const createWindow = async () => {
     },
   });
 
+  // generate main menu
+  generateMenu({mainWindow});
+  // dynamically generate menu based on updates to user presets
+  ipcMain.on('setUserPresets', (_, userPresets) => generateMenu({userPresets, mainWindow}));
 
   // and load the index.html of the app.
   isLocalDevelop 
     ? mainWindow.loadURL(`http://localhost:${5173}`) // use this when running in dev mode
     : loadURL(mainWindow);
 
-
 };
-
-const handleSetUserPresets = (_, userPresets) => {
-  generateMenu({userPresets});
-}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', () => {
-  ipcMain.on('setUserPresets', handleSetUserPresets)
-  createWindow()
-});
+app.on('ready', () => createWindow());
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits

@@ -4,9 +4,12 @@ const { generateFileMenu } = require('./fileMenu');
 const viewMenu = require('./viewMenu');
 const helpMenu = require('./helpMenu');
 
-module.exports.generateMenu = (args = {userPresets: []}) => {
-    const { userPresets } = args;
-    const fileMenuArgs = { userPresets };
+module.exports.generateMenu = (args = {
+    userPresets: [],
+    mainWindow
+}) => {
+    const { userPresets, mainWindow } = args;
+    const fileMenuArgs = { userPresets, mainWindow };
     const template = [
         ...appMenu,
         ...generateFileMenu(fileMenuArgs), // dynamic menu based on presets
