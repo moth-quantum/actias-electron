@@ -1,4 +1,5 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
+const { mainMenu } = require('./menu');
 const serve = require("electron-serve"); // TODO: re,ove from nm
 const path = require('path');
 
@@ -15,6 +16,7 @@ const createWindow = async () => {
   await app.whenReady();
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    frame: false,
     width: 1450,
     height: 880,
     // center: true,
@@ -25,6 +27,8 @@ const createWindow = async () => {
       zoomFactor: 0.9
     },
   });
+
+  Menu.setApplicationMenu(mainMenu);
 
   // and load the index.html of the app.
   isLocalDevelop 
