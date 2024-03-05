@@ -1,13 +1,15 @@
 const { Menu } = require('electron');
 const appMenu = require('./appMenu');
-const fileMenu = require('./fileMenu');
+const { generateFileMenu } = require('./fileMenu');
 const viewMenu = require('./viewMenu');
 const helpMenu = require('./helpMenu');
 
-module.exports.generateMenu = () => {
+module.exports.generateMenu = (args = {userPresets: []}) => {
+    const { userPresets } = args;
+    const fileMenuArgs = { userPresets };
     const template = [
         ...appMenu,
-        ...fileMenu,
+        ...generateFileMenu(fileMenuArgs), // dynamic menu based on presets
         ...viewMenu,
         ...helpMenu
     ];
