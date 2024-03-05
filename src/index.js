@@ -2,7 +2,7 @@ const { app, BrowserWindow } = require('electron');
 const serve = require("electron-serve"); // TODO: re,ove from nm
 const path = require('path');
 
-const isLocalDevelop = false;
+const isLocalDevelop = process.env.IS_LOCAL_DEVELOP === 'true';
 
 const loadURL = serve({directory: './src/q1synth2'});
 
