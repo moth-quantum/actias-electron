@@ -33,6 +33,7 @@ const createWindow = () => {
   // dynamically generate menu based on updates to user presets
   ipcMain.on('syncUserPresets', (_, userPresets) => generateMenu({userPresets, mainWindow}));
 
+
   // and load the index.html of the app.
   isLocalDevelop 
     ? mainWindow.loadURL(`http://localhost:${5173}`) // use this when running in dev mode

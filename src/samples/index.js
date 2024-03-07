@@ -1,13 +1,17 @@
+const { app } = require('electron');
 const fs = require('fs');
 const http = require('http');
 const path = require('path');
 const express = require('express');
-const app = express();
+const expressApp = express();
 const cors = require('cors');
+
+const Store = require('electron-store');
+const store = new Store();
 
 let server;
 
-module.exports.serveSamples = function(directory, mainWindow) {
+const serveSamples = function(directory, mainWindow) {
     // clean up old server
     server && server.close();
 
@@ -20,12 +24,21 @@ module.exports.serveSamples = function(directory, mainWindow) {
             .filter(file => ['.wav', '.mp3', '.flac'].includes(path.extname(file)))
             .map(file => `http://localhost:49152/samples/${file}`)
 
-        app.use(cors());
-        app.use('/samples', express.static(directory));
-        server = http.createServer(app);
+        expressApp.use(cors());
+        expressApp.use('/samples', express.static(directory));
+        server = http.createServer(expressApp);
         server.listen(49152, () => {
             console.log('Sample library server listening on port 49152');
             mainWindow.webContents.send('updateSamples', samples);
         });
+
+        store.set('sampleDirectory', directory);
     });
 }
+
+app.on('ready', () => {
+    const directory = store.get('sampleDirectory');
+    directory && serveSamples(directory);
+});
+
+module.exports.serveSamples = serveSamples;
