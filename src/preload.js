@@ -2,6 +2,7 @@ const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('isApp', true)
 contextBridge.exposeInMainWorld('electronAPI', {
-    setUserPresets: (presets) => ipcRenderer.send('setUserPresets', presets),
-    onSetPreset: (callback) => ipcRenderer.on('setPreset', (_, name) => callback(name))
+    syncUserPresets: (presets) => ipcRenderer.send('syncUserPresets', presets),
+    onSetPreset: (callback) => ipcRenderer.on('setPreset', (_, name) => callback(name)),
+    onSavePreset: (callback) => ipcRenderer.on('savePreset', callback)
 })

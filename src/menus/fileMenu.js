@@ -1,3 +1,4 @@
+const { dialog } = require('electron');
 const isMac = process.platform === 'darwin'
 
 module.exports.generateFileMenu = ({
@@ -5,6 +6,7 @@ module.exports.generateFileMenu = ({
     mainWindow
 }) => {
     const setPreset = (name) => mainWindow.webContents.send('setPreset', name)
+    const savePreset = () => mainWindow.webContents.send('savePreset')
     
     return [{
         label: 'File',
@@ -42,9 +44,32 @@ module.exports.generateFileMenu = ({
                     },
                 ]
             },
-            { label: 'Save Preset', click: () => console.log('save clicked') },
-            { label: 'Import Preset', click: () => console.log('import clicked') },
-            { label: 'Export preset', click: () => console.log('export clicked') },
+            { label: 'Save preset', click: savePreset },
+            { label: 'Export Preset', click: () => {
+                dialog.showSaveDialog({
+                    title: 'Export Preset',
+                    defaultPath: 'preset.json',
+                    showsTagField: false,
+                    filters: [{ name: 'Preset', extensions: ['json'] }]
+                }).then(({canceled, filePath}) => {
+                    if (canceled) return;
+                    console.log(filePath)
+                    // mainWindow.webContents.send('savePreset', filePath)
+                    // TODO: get json from mainWindow and write to file
+                })
+            } },
+            { label: 'Import Preset', click: () => {
+                dialog.showOpenDialog({
+                    title: 'Import Preset',
+                    properties: ['openFile'],
+                    filters: [{ name: 'Preset', extensions: ['json'] }]
+                }).then(({canceled, filePaths}) => {
+                    if (canceled) return;
+                    console.log(filePaths)
+                    // mainWindow.webContents.send('loadPreset', filePaths[0])
+                    // TODO: read file and send to mainWindow
+                })
+            } },
             { type: 'separator' },
             { label: 'Sample Library', click: () => console.log('sample library') },
             { type: 'separator' },

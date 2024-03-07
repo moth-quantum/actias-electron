@@ -31,7 +31,7 @@ const createWindow = () => {
   // generate main menu
   generateMenu({mainWindow});
   // dynamically generate menu based on updates to user presets
-  ipcMain.on('setUserPresets', (_, userPresets) => generateMenu({userPresets, mainWindow}));
+  ipcMain.on('syncUserPresets', (_, userPresets) => generateMenu({userPresets, mainWindow}));
 
   // and load the index.html of the app.
   isLocalDevelop 
