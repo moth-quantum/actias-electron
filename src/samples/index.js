@@ -38,7 +38,8 @@ const serveSamples = function(directory, mainWindow) {
 
 app.on('ready', () => {
     const directory = store.get('sampleDirectory');
-    directory && serveSamples(directory);
+    // TODO: reinstate once we have main win
+    // directory && serveSamples(directory);
 });
 
 module.exports.serveSamples = serveSamples;
