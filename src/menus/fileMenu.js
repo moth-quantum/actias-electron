@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { dialog, ipcMain } = require('electron');
-import { serveSamples } from '../samples/index.js';
+const { serveSamples } = require('../samples/index.js');
 
 const isMac = process.platform === 'darwin'
 
@@ -78,7 +78,7 @@ module.exports.generateFileMenu = ({
             // } },
             { label: 'Export Preset', click: () => {
                 mainWindow.webContents.send('exportPreset');
-                ipcMain.once('exportPresetResponse', (event, response) => {
+                ipcMain.once('exportPresetResponse', (_, response) => {
                     dialog.showSaveDialog({
                         title: 'Export Preset',
                         defaultPath: 'preset.json',
@@ -93,13 +93,13 @@ module.exports.generateFileMenu = ({
                 })
             } },            
             { type: 'separator' },
-            { label: 'Sample Library', click: () => {
+            { label: 'Select Samples Directory', click: () => {
                 dialog.showOpenDialog({
                     title: 'Select Sample Library',
                     properties: ['openDirectory']
                 }).then(({canceled, filePaths}) => {
                     if (canceled) return;
-                    serveSamples(filePaths[0]);
+                    serveSamples(filePaths[0], mainWindow);
                 })
             } },
             { type: 'separator' },
