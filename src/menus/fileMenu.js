@@ -1,4 +1,7 @@
-const { dialog } = require('electron');
+const fs = require('fs');
+const { dialog, ipcMain } = require('electron');
+import { serveSamples } from '../samples/index.js';
+
 const isMac = process.platform === 'darwin'
 
 module.exports.generateFileMenu = ({
@@ -16,7 +19,7 @@ module.exports.generateFileMenu = ({
                 accelerator: 'CmdOrCtrl+R',
                 click: () => mainWindow.reload()
             },
-            { type: 'separator' },
+            { type: 'separator' },          
             { 
                 label: 'Load Preset', 
                 submenu: [
@@ -44,34 +47,61 @@ module.exports.generateFileMenu = ({
                     },
                 ]
             },
-            { label: 'Save preset', click: savePreset },
+            { 
+                label: 'Save preset', 
+                click: savePreset,
+                accelerator: 'CmdOrCtrl+S'
+            },              
+            // TODO: implement import preset if budget allows
+            // { label: 'Import Preset', click: () => {
+            //     dialog.showOpenDialog({
+            //         title: 'Import Preset',
+            //         properties: ['openFile'],
+            //         filters: [{ name: 'Preset', extensions: ['json'] }]
+            //     }).then(({canceled, filePaths}) => {
+            //         if (canceled) return;
+            //         fs.readFile(filePaths[0], 'utf-8', (err, data) => {
+            //             if (err) {
+            //                 console.error("An error occurred reading the file :", err);
+            //                 return;
+            //             }
+            //             try {
+            //                 mainWindow.webContents.send('importPreset', {
+            //                     data: JSON.parse(data), 
+            //                     name: path.basename(filePaths[0], '.json')
+            //                 });
+            //             } catch (err) {
+            //                 console.error('Error parsing JSON:', err);
+            //             }
+            //         });
+            //     })
+            // } },
             { label: 'Export Preset', click: () => {
-                dialog.showSaveDialog({
-                    title: 'Export Preset',
-                    defaultPath: 'preset.json',
-                    showsTagField: false,
-                    filters: [{ name: 'Preset', extensions: ['json'] }]
-                }).then(({canceled, filePath}) => {
-                    if (canceled) return;
-                    console.log(filePath)
-                    // mainWindow.webContents.send('savePreset', filePath)
-                    // TODO: get json from mainWindow and write to file
+                mainWindow.webContents.send('exportPreset');
+                ipcMain.once('exportPresetResponse', (event, response) => {
+                    dialog.showSaveDialog({
+                        title: 'Export Preset',
+                        defaultPath: 'preset.json',
+                        showsTagField: false,
+                        filters: [{ name: 'Preset', extensions: ['json'] }]
+                    }).then(({canceled, filePath}) => {
+                        if (canceled) return;
+                        fs.writeFile(filePath, JSON.stringify(response), (err) => {
+                            if (err) console.error("An error occurred creating the file :", err);
+                        });
+                    })
                 })
-            } },
-            { label: 'Import Preset', click: () => {
+            } },            
+            { type: 'separator' },
+            { label: 'Sample Library', click: () => {
                 dialog.showOpenDialog({
-                    title: 'Import Preset',
-                    properties: ['openFile'],
-                    filters: [{ name: 'Preset', extensions: ['json'] }]
+                    title: 'Select Sample Library',
+                    properties: ['openDirectory']
                 }).then(({canceled, filePaths}) => {
                     if (canceled) return;
-                    console.log(filePaths)
-                    // mainWindow.webContents.send('loadPreset', filePaths[0])
-                    // TODO: read file and send to mainWindow
+                    serveSamples(filePaths[0]);
                 })
             } },
-            { type: 'separator' },
-            { label: 'Sample Library', click: () => console.log('sample library') },
             { type: 'separator' },
             isMac ? { role: 'close' } : { role: 'quit' }
         ]
