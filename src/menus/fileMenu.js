@@ -20,38 +20,38 @@ module.exports.generateFileMenu = ({
                 click: () => mainWindow.reload()
             },
             { type: 'separator' },          
-            { 
-                label: 'Load Preset', 
-                submenu: [
-                    { 
-                        label: 'Factory', 
-                        submenu: [
-                            { label: 'FM', click: () => console.log('FM') },
-                            { label: 'Subtractive', click: () => console.log('Subtractive') },
-                            { label: 'Additive', click: () => console.log('Additive') },
-                        ],
-                    },
-                    { 
-                        label: 'Cephas Teom',  
-                        submenu: [
-                            { label: 'FM Bass', click: () => console.log('FM Bass') },
-                            { label: 'Gravy Granulator', click: () => console.log('Gravy Granulator') },
-                            { label: 'Ocean Dream', click: () => console.log('Ocean Dream') },
-                        ],
-                    },
-                    {   
-                        label: 'User',  
-                        submenu: Object.keys(userPresets).map(name => {
-                            return { label: name, click: () => setPreset(name) }
-                        })
-                    },
-                ]
-            },
-            { 
-                label: 'Save preset', 
-                click: savePreset,
-                accelerator: 'CmdOrCtrl+S'
-            },              
+            // { 
+            //     label: 'Load Preset', 
+            //     submenu: [
+            //         { 
+            //             label: 'Factory', 
+            //             submenu: [
+            //                 { label: 'FM', click: () => console.log('FM') },
+            //                 { label: 'Subtractive', click: () => console.log('Subtractive') },
+            //                 { label: 'Additive', click: () => console.log('Additive') },
+            //             ],
+            //         },
+            //         { 
+            //             label: 'Cephas Teom',  
+            //             submenu: [
+            //                 { label: 'FM Bass', click: () => console.log('FM Bass') },
+            //                 { label: 'Gravy Granulator', click: () => console.log('Gravy Granulator') },
+            //                 { label: 'Ocean Dream', click: () => console.log('Ocean Dream') },
+            //             ],
+            //         },
+            //         {   
+            //             label: 'User',  
+            //             submenu: Object.keys(userPresets).map(name => {
+            //                 return { label: name, click: () => setPreset(name) }
+            //             })
+            //         },
+            //     ]
+            // },
+            // { 
+            //     label: 'Save preset', 
+            //     click: savePreset,
+            //     accelerator: 'CmdOrCtrl+S'
+            // },              
             // TODO: implement import preset if budget allows
             // { label: 'Import Preset', click: () => {
             //     dialog.showOpenDialog({

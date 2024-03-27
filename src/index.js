@@ -17,14 +17,14 @@ const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     frame: false,
-    width: 1450,
-    height: 880,
+    width: 1600,
+    height: 900,
     // center: true,
     x: 0,
     y: 0,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      zoomFactor: 0.9
+      zoomFactor: 0.8
     },
   });
 
@@ -41,7 +41,7 @@ const createWindow = () => {
 
   // Open the DevTools.
   if (isLocalDevelop) {
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
   }
 };
 
