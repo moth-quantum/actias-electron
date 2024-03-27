@@ -19,6 +19,7 @@ const createWindow = () => {
     frame: false,
     width: 1600,
     height: 900,
+    minWidth: 1200,
     // center: true,
     x: 0,
     y: 0,

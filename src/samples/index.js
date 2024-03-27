@@ -22,13 +22,13 @@ const serveSamples = function(directory, mainWindow) {
         }
         const samples = files
             .filter(file => ['.wav', '.mp3', '.flac'].includes(path.extname(file)))
-            .map(file => `http://localhost:49152/samples/${file}`)
+            .map(file => `http://localhost:1024/samples/${file}`)
 
         expressApp.use(cors());
         expressApp.use('/samples', express.static(directory));
         server = http.createServer(expressApp);
-        server.listen(49152, () => {
-            console.log('Sample library server listening on port 49152');
+        server.listen(1024, () => {
+            console.log('Sample library server listening on port 1024');
             mainWindow.webContents.send('updateSamples', samples);
         });
 
@@ -41,5 +41,10 @@ app.on('ready', () => {
     // TODO: reinstate once we have main win
     // directory && serveSamples(directory);
 });
+
+app.on('quit', () => {
+    console.log('Shutting down sample server');
+    server && server.close();
+})
 
 module.exports.serveSamples = serveSamples;
