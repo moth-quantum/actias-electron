@@ -46,6 +46,11 @@ const createWindow = () => {
   if (isLocalDevelop) {
     mainWindow.webContents.openDevTools();
   }
+
+  // Emitted when the window is closed.
+  app.on('before-quit', (event) => {
+    mainWindow.webContents.send('quit');
+  });
 };
 
 // This method will be called when Electron has finished

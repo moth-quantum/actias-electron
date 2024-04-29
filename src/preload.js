@@ -12,6 +12,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     onSavePreset: (callback) => ipcRenderer.on('savePreset', () => callback()),
     onImportPreset: (callback) => ipcRenderer.on('importPreset', (_, obj) => callback(obj)),
     onExportPreset: (callback) => ipcRenderer.on('exportPreset', (event) => callback(event)),
+    onQuit: (callback) => ipcRenderer.on('quit', callback),
     exportPresetResponse: (obj) => ipcRenderer.send('exportPresetResponse', obj),
     syncUserPresets: (presets) => ipcRenderer.send('syncUserPresets', presets),
 })
