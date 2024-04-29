@@ -7,6 +7,7 @@ It is an installation of the Electron-Forge project - an all-in-one tool for pac
 The web app that this 'shell' houses, as well as information on how to actively work on it, can be found [here](https://github.com/cephasteom/q1synth2).
 
 ## Environment Variables
+The Q1 Synth desktop app requires connection to a remote API for networking to function. These credentials include the domain of the remote API, an API key and a Pusher key for authentication. Contact Lunar for a copy of these.
 * copy .env.example to .env and fill out with the appropriate credentials
 
 ## Local Development

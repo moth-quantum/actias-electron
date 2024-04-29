@@ -1,6 +1,11 @@
 const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('isApp', true)
+
+contextBridge.exposeInMainWorld('apiDomain', process.env.API_DOMAIN)
+contextBridge.exposeInMainWorld('apiToken', process.env.API_TOKEN)
+contextBridge.exposeInMainWorld('apiPusherKey', process.env.API_PUSHER_KEY)
+
 contextBridge.exposeInMainWorld('electronAPI', {
     onUpdateSamples: (callback) => ipcRenderer.on('updateSamples', (_, samples) => callback(samples)),
     onSetPreset: (callback) => ipcRenderer.on('setPreset', (_, name) => callback(name)),

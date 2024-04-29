@@ -4,7 +4,6 @@ const serve = require("electron-serve"); // TODO: re,ove from nm
 const path = require('path');
 require('dotenv').config();
 
-console.log(process.env.API_DOMAIN);
 const isLocalDevelop = process.env.IS_LOCAL_DEVELOP === 'true';
 
 const loadURL = serve({directory: './src/q1synth2'});
@@ -33,6 +32,7 @@ const createWindow = () => {
 
   // generate main menu
   generateMenu({mainWindow});
+  
   // dynamically generate menu based on updates to user presets
   ipcMain.on('syncUserPresets', (_, userPresets) => generateMenu({userPresets, mainWindow}));
 
@@ -44,7 +44,7 @@ const createWindow = () => {
 
   // Open the DevTools.
   if (isLocalDevelop) {
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
   }
 };
 
