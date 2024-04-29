@@ -2,7 +2,9 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const { generateMenu } = require('./menus');
 const serve = require("electron-serve"); // TODO: re,ove from nm
 const path = require('path');
+require('dotenv').config();
 
+console.log(process.env.API_DOMAIN);
 const isLocalDevelop = process.env.IS_LOCAL_DEVELOP === 'true';
 
 const loadURL = serve({directory: './src/q1synth2'});
