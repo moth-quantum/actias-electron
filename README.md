@@ -6,6 +6,9 @@ It is an installation of the Electron-Forge project - an all-in-one tool for pac
 
 The web app that this 'shell' houses, as well as information on how to actively work on it, can be found [here](https://github.com/cephasteom/q1synth2).
 
+## Environment Variables
+* copy .env.example to .env and fill out with the appropriate credentials
+
 ## Local Development
 You can develop this application and the web application concurrently. 
 * Spin up [local version of web app](https://github.com/cephasteom/q1synth2) 
