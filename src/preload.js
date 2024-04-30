@@ -3,6 +3,7 @@ const { contextBridge, ipcRenderer } = require('electron')
 contextBridge.exposeInMainWorld('isApp', true)
 
 contextBridge.exposeInMainWorld('apiDomain', process.env.API_DOMAIN)
+contextBridge.exposeInMainWorld('apiWsDomain', process.env.API_WS_DOMAIN)
 contextBridge.exposeInMainWorld('apiToken', process.env.API_TOKEN)
 contextBridge.exposeInMainWorld('apiPusherKey', process.env.API_PUSHER_KEY)
 
