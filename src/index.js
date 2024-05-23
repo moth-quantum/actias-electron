@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { generateMenu } = require('./menus');
-const serve = require("electron-serve"); // TODO: re,ove from nm
+const serve = require("electron-serve"); 
 const path = require('path');
 require('dotenv').config();
 
@@ -46,11 +46,6 @@ const createWindow = () => {
   if (isLocalDevelop) {
     mainWindow.webContents.openDevTools();
   }
-
-  // Emitted when the window is closed.
-  app.on('before-quit', (event) => {
-    mainWindow.webContents.send('quit');
-  });
 };
 
 // This method will be called when Electron has finished

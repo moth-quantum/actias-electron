@@ -27,7 +27,7 @@ You can develop this application and the web application concurrently.
 * In the web app repo, run `yarn build` to generate a bundled version of the html, css and js files
 * Clear the contents of src/q1synth2 in this repo
 * Copy the contents of the build/ folder in the web app repo into src/q1synth2 in this repo
-* Currently, the variables passed from .env file in preload.js do not work. Temporarily, we have to paste in the credentials. Do not commit these to the repo!
+* Currently, the variables passed from .env file in preload.js are not available at build time. Temporarily, we have to paste in the credentials. Do not commit these to the repo!
 * `yarn make` to package up the distributables
 
 ## Publishing
