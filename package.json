@@ -1,7 +1,7 @@
 {
   "name": "q1synth2-electron",
   "productName": "Q1 Synth",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A quantum synthesizer, inspired by and integrated with quantum circuits.",
   "main": "src/index.js",
   "scripts": {
