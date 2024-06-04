@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const { dialog, ipcMain } = require('electron');
 const { serveSamples } = require('../samples/index.js');
 
@@ -51,31 +52,30 @@ module.exports.generateFileMenu = ({
             //     label: 'Save preset', 
             //     click: savePreset,
             //     accelerator: 'CmdOrCtrl+S'
-            // },              
-            // TODO: implement import preset if budget allows
-            // { label: 'Import Preset', click: () => {
-            //     dialog.showOpenDialog({
-            //         title: 'Import Preset',
-            //         properties: ['openFile'],
-            //         filters: [{ name: 'Preset', extensions: ['json'] }]
-            //     }).then(({canceled, filePaths}) => {
-            //         if (canceled) return;
-            //         fs.readFile(filePaths[0], 'utf-8', (err, data) => {
-            //             if (err) {
-            //                 console.error("An error occurred reading the file :", err);
-            //                 return;
-            //             }
-            //             try {
-            //                 mainWindow.webContents.send('importPreset', {
-            //                     data: JSON.parse(data), 
-            //                     name: path.basename(filePaths[0], '.json')
-            //                 });
-            //             } catch (err) {
-            //                 console.error('Error parsing JSON:', err);
-            //             }
-            //         });
-            //     })
-            // } },
+            // },
+            { label: 'Import Preset', click: () => {
+                dialog.showOpenDialog({
+                    title: 'Import Preset',
+                    properties: ['openFile'],
+                    filters: [{ name: 'Preset', extensions: ['json'] }]
+                }).then(({canceled, filePaths}) => {
+                    if (canceled) return;
+                    fs.readFile(filePaths[0], 'utf-8', (err, data) => {
+                        if (err) {
+                            console.error("An error occurred reading the file :", err);
+                            return;
+                        }
+                        try {
+                            mainWindow.webContents.send('importPreset', {
+                                data: JSON.parse(data), 
+                                name: path.basename(filePaths[0], '.json')
+                            });
+                        } catch (err) {
+                            console.error('Error parsing JSON:', err);
+                        }
+                    });
+                })
+            } },
             { label: 'Export Preset', click: () => {
                 mainWindow.webContents.send('exportPreset');
                 ipcMain.once('exportPresetResponse', (_, response) => {
