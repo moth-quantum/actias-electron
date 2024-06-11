@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   packagerConfig: {
     asar: true,
@@ -11,7 +13,7 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      platforms: ['darwin', 'linux'],
     },
     {
       name: '@electron-forge/maker-deb',
@@ -28,4 +30,16 @@ module.exports = {
       config: {},
     },
   ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'lunar-build',
+          name: 'q1synth-app'
+        },
+        prerelease: true
+      }
+    }
+  ]
 };
