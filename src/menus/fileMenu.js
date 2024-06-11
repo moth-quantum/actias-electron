@@ -53,7 +53,7 @@ module.exports.generateFileMenu = ({
             //     click: savePreset,
             //     accelerator: 'CmdOrCtrl+S'
             // },
-            { label: 'Import Preset', click: () => {
+            { label: 'Import Project', click: () => {
                 dialog.showOpenDialog({
                     title: 'Import Preset',
                     properties: ['openFile'],
@@ -76,7 +76,7 @@ module.exports.generateFileMenu = ({
                     });
                 })
             } },
-            { label: 'Export Preset', click: () => {
+            { label: 'Export Project', click: () => {
                 mainWindow.webContents.send('exportPreset');
                 ipcMain.once('exportPresetResponse', (_, response) => {
                     dialog.showSaveDialog({
