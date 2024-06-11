@@ -2,6 +2,10 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const { generateMenu } = require('./menus');
 const serve = require("electron-serve"); 
 const path = require('path');
+const { updateElectronApp } = require('update-electron-app');
+
+updateElectronApp();
+
 require('dotenv').config();
 
 const isLocalDevelop = process.env.IS_LOCAL_DEVELOP === 'true';
