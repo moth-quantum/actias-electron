@@ -38,3 +38,5 @@ To publish distributables, you must have write access to this Github repo.
 * Increment the version number in package.json
 * `yarn run publish` to publish the distributable for the platform you are currently working on
 * `yarn run publish --arch=arm64,x64` to publish distributables for both Apple Intel and Apple Silicon chips
+
+Releases are available [here](https://github.com/lunar-build/q1synth-app/releases).
