@@ -6,9 +6,7 @@ module.exports = {
     icon: './src/assets/icons/q1-icon',
     osxSign: {},
     osxNotarize: {
-      appleId: process.env.APPLE_ID,
-      appleIdPassword: process.env.APPLE_PASSWORD,
-      teamId: process.env.APPLE_TEAM_ID
+      keychainProfile: 'my-keychain-profile'
     }
   },
   rebuildConfig: {},
