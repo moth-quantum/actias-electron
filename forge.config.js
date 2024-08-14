@@ -4,7 +4,12 @@ module.exports = {
   packagerConfig: {
     asar: true,
     icon: './src/assets/icons/q1-icon',
-    osxSign: {}
+    osxSign: {},
+    osxNotarize: {
+      appleApiKey: process.env.APPLE_API_KEY,
+      appleApiKeyId: process.env.APPLE_API_KEY_ID,
+      appleApiIssuer: process.env.APPLE_API_ISSUER
+    }
   },
   rebuildConfig: {},
   makers: [
