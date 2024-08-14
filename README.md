@@ -19,17 +19,17 @@ The Q1 Synth desktop app requires connection to a remote API for networking to f
 You can develop this application and the web application concurrently. 
 * Spin up [local version of web app](https://github.com/cephasteom/q1synth2) 
 * http://localhost:5147 to view the web application
-* `yarn start` to view the desktop application
+* `yarn start` or `npm run start` to view the desktop application
 
 ## Building Distributables
 [Electron-Forge docs](https://www.electronforge.io/#building-distributables)
 
-* In the web app repo, run `yarn build` to generate a bundled version of the html, css and js files
+* In the web app repo, run `yarn build` or `npm run build` to generate a bundled version of the html, css and js files
 * Clear the contents of src/q1synth2 in this repo
 * Copy the contents of the build/ folder in the web app repo into src/q1synth2 in this repo
 * Currently, the variables passed from .env file in preload.js are not available at build time. Temporarily, we have to paste in the credentials. Do not commit these to the repo!
-* `yarn make` to package up the distributable for the platform you are currently working on
-* `yarn make --arch=arm64,x64` to package up distributables for both Apple Intel and Apple Silicon chips
+* `yarn make` or `npm run make` to package up the distributable for the platform you are currently working on
+* `yarn make --arch=arm64,x64` or `npm run make --arch=arm64,x64` to package up distributables for both Apple Intel and Apple Silicon chips
 
 ## Publishing
 To publish distributables, you must have write access to this Github repo. 
