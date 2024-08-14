@@ -35,7 +35,9 @@ You can develop this application and the web application concurrently.
 * `yarn make --arch=arm64,x64` or `npm run make --arch=arm64,x64` to package up distributables for both Apple Intel and Apple Silicon chips
 
 ## Publishing
-To publish distributables, you must have write access to this Github repo. 
+To publish distributables, you must have write access to this Github repo, as well as the correct code signing certificates in your keychain, and a valid Apple ID account credentials in the .env file.
+* See the [Electron Forge docs](https://www.electronforge.io/guides/code-signing/code-signing-macos) on code signing for information on how to generate code signing certificates and add them to your keychain using Xcode.
+* See the [Electron Forge docs](https://www.electronforge.io/guides/code-signing/code-signing-macos) for generating credentials for notarization process.
 * [Generate a personal access](https://github.com/settings/tokens/new) token with write access
 * Paste token into GITHUB_TOKEN in .env file
 * Increment the version number in package.json
