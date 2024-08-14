@@ -16,6 +16,9 @@ The Q1 Synth desktop app requires connection to a remote API for networking to f
 * API_PUSHER_KEY refers to the REVERB_APP_KEY in the remote server's .env file
 
 ## Local Development
+To install packages, run:
+* `nvm use` - switches to correct version of Node
+* `yarn` - installs Node packages (dependencies)
 You can develop this application and the web application concurrently. 
 * Spin up [local version of web app](https://github.com/cephasteom/q1synth2) 
 * http://localhost:5147 to view the web application
