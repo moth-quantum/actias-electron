@@ -1,7 +1,7 @@
 {
   "name": "q1synth2-electron",
   "productName": "Actias",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "A quantum synthesizer, inspired by and integrated with quantum circuits.",
   "main": "src/index.js",
   "scripts": {
