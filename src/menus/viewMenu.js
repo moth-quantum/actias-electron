@@ -7,7 +7,6 @@ module.exports = [
             { label: 'Manual', click: () => console.log('view cb') },
             { role: 'reload' },
             { role: 'forcereload' },
-            { role: 'toggledevtools' },
             { type: 'separator' },
             { role: 'resetzoom' },
             { role: 'zoomin' },
