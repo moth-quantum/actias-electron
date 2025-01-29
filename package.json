@@ -5,7 +5,7 @@
   "description": "A quantum synthesizer, inspired by and integrated with quantum circuits.",
   "main": "src/index.js",
   "scripts": {
-    "start": "IS_LOCAL_DEVELOP=true electron-forge start",
+    "start": "IS_LOCAL_DEVELOP=false electron-forge start",
     "package": "electron-forge package",
     "make": "IS_LOCAL_DEVELOP=false electron-forge make",
     "publish": "electron-forge publish",
@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.4.2",
-    "@electron-forge/maker-deb": "^6.4.2",
-    "@electron-forge/maker-rpm": "^6.4.2",
+    "@electron-forge/maker-deb": "^7.6.1",
+    "@electron-forge/maker-rpm": "^7.6.1",
     "@electron-forge/maker-squirrel": "^6.4.2",
     "@electron-forge/maker-zip": "^6.4.2",
     "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
