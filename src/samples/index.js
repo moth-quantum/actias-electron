@@ -6,9 +6,6 @@ const express = require('express');
 const expressApp = express();
 const cors = require('cors');
 
-const Store = require('electron-store');
-const store = new Store();
-
 let server;
 
 const serveSamples = function(directory, mainWindow) {
@@ -31,16 +28,8 @@ const serveSamples = function(directory, mainWindow) {
             console.log('Sample library server listening on port 1024');
             mainWindow.webContents.send('updateSamples', samples);
         });
-
-        store.set('sampleDirectory', directory);
     });
 }
-
-app.on('ready', () => {
-    const directory = store.get('sampleDirectory');
-    // TODO: reinstate once we have main win
-    // directory && serveSamples(directory);
-});
 
 app.on('quit', () => {
     console.log('Shutting down sample server');
