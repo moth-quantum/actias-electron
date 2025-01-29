@@ -1,8 +1,13 @@
-module.exports = [
-    {
-        label: 'Help',
-        submenu: [
-            { label: 'Manual', click: () => console.log('view cb') },
-        ]
-    }
-]
+module.exports.generateHelpMenu = (mainWindow) => {
+    return [
+        {
+            label: 'Help',
+            submenu: [
+                { 
+                    label: 'Restore Factory Settings', 
+                    click: () => mainWindow.webContents.send('restoreFactorySettings')
+                },
+            ]
+        }
+    ]
+}
