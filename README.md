@@ -15,12 +15,20 @@ The Q1 Synth desktop app requires connection to a remote API for networking to f
 * An API_TOKEN can be generated using Laravel Tinker on the command line of the API server. For instructions, see [here](https://github.com/lunar-build/moth-q1-api).
 * API_PUSHER_KEY refers to the REVERB_APP_KEY in the remote server's .env file
 
+## Local Setup
+To further develop or publish a new release of this app, you need to set it up locally. You will need to install Node and Yarn.
+### Install Node
+* Install nvm - see [https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script](https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script)
+* Run `nvm use` at the root of the directory and follow instructions to install the correct Node version if missing.
+### Install Yarn
+* Install yarn - `npm install --global yarn`
+
+### Build Node Modules
+* Run `yarn` at the root of the directory to install all Node packages (dependencies)
+
 ## Local Development
-To install packages, run:
-* `nvm use` - switches to correct version of Node
-* `yarn` - installs Node packages (dependencies)
 You can develop this application and the web application concurrently. 
-* Spin up [local version of web app](https://github.com/cephasteom/q1synth2) 
+* Spin up [local version of web app](https://github.com/moth-quantum/actias-backend) 
 * http://localhost:5147 to view the web application
 * `yarn start` or `npm run start` to view the desktop application
 
@@ -41,7 +49,15 @@ To publish distributables, you must have write access to this Github repo, as we
 * [Generate a personal access](https://github.com/settings/tokens/new) token with write access
 * Paste token into GITHUB_TOKEN in .env file
 * Increment the version number in package.json
+* Replace the exposed variables in src/preload.js with those in your .env file. Do not commit this file!
+```js
+contextBridge.exposeInMainWorld('environment', process.env.ENVIRONMENT) // replace
+contextBridge.exposeInMainWorld('apiDomain', process.env.API_DOMAIN) // replace
+contextBridge.exposeInMainWorld('apiWsDomain', process.env.API_WS_DOMAIN) // replace
+contextBridge.exposeInMainWorld('apiToken', process.env.API_TOKEN) // replace
+contextBridge.exposeInMainWorld('apiPusherKey', process.env.API_PUSHER_KEY) // replace
+```
 * `yarn run publish` to publish the distributable for the platform you are currently working on
 * `yarn run publish --arch=arm64,x64` to publish distributables for both Apple Intel and Apple Silicon chips
 
-Releases are available [here](https://github.com/lunar-build/q1synth-app/releases).
+Releases are available [here](https://github.com/moth-quantum/Actias/releases).
