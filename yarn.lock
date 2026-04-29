@@ -111,35 +111,35 @@
   optionalDependencies:
     electron-installer-redhat "^3.2.0"
 
-"@electron-forge/maker-squirrel@^7.6.1":
-  version "7.6.1"
-  resolved "https://registry.yarnpkg.com/@electron-forge/maker-squirrel/-/maker-squirrel-7.6.1.tgz#1516c71722a311a81dfcb302cbe11cbcde5e8192"
-  integrity sha512-7EMLcl0QM5GfdY+enfauEqV6ZW14A1S6Eqoev812FXGTm88G8Ik0tPRw6SsIaI8R++YqxsbdCGTQjzdJWY0bJA==
+"@electron-forge/maker-squirrel@^6.4.2":
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/@electron-forge/maker-squirrel/-/maker-squirrel-6.4.2.tgz#92d44fc6cadf6ff23c65dc901c8044d7c8b53f95"
+  integrity sha512-ukK3RcFaBrQXUzR52PsHxfwDq5XKSnj6A1kkXiyHWqgj+HIU97prBScBb5JRtasPvYN+nDdQO2vlInsLaqcx9Q==
   dependencies:
-    "@electron-forge/maker-base" "7.6.1"
-    "@electron-forge/shared-types" "7.6.1"
+    "@electron-forge/maker-base" "6.4.2"
+    "@electron-forge/shared-types" "6.4.2"
     fs-extra "^10.0.0"
   optionalDependencies:
-    electron-winstaller "^5.3.0"
+    electron-winstaller "^5.0.0"
 
-"@electron-forge/maker-zip@^7.6.1":
-  version "7.6.1"
-  resolved "https://registry.yarnpkg.com/@electron-forge/maker-zip/-/maker-zip-7.6.1.tgz#fadd3ce2f31c57ede386bae3043c72625c8a1b36"
-  integrity sha512-omoBwoY99DpsgabVIu6Qva+r8kwCY04zDV+P60WN6x+JX/MF+Bk3zI271aH6raZaB+YSbvaed/LDG1QmEM9cTA==
+"@electron-forge/maker-zip@^6.4.2":
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/@electron-forge/maker-zip/-/maker-zip-6.4.2.tgz#f8a064bde04bfc73756716ed4d7d62bdd455de28"
+  integrity sha512-k2nfhhnxcYbUS7rCKCisuqEalxtH9l73+lrtfL0aQZiE/BLbDXyNckDIDOPvX0tBEg62nVzUdJonZwOhZVvAMw==
   dependencies:
-    "@electron-forge/maker-base" "7.6.1"
-    "@electron-forge/shared-types" "7.6.1"
+    "@electron-forge/maker-base" "6.4.2"
+    "@electron-forge/shared-types" "6.4.2"
     cross-zip "^4.0.0"
     fs-extra "^10.0.0"
     got "^11.8.5"
 
-"@electron-forge/plugin-auto-unpack-natives@^7.6.1":
-  version "7.6.1"
-  resolved "https://registry.yarnpkg.com/@electron-forge/plugin-auto-unpack-natives/-/plugin-auto-unpack-natives-7.6.1.tgz#a0d40f23448ce8340e14ab2398ae7cc0a6d8972f"
-  integrity sha512-sPFSVhlJBvEA70e0QNbYno5AYc8nvmKCgs4YqTwc24ONhIX0TwGAzjuJ7AZBOj88rhhY9+9Rkl9cONVa5GGZvA==
+"@electron-forge/plugin-auto-unpack-natives@^6.4.2":
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/@electron-forge/plugin-auto-unpack-natives/-/plugin-auto-unpack-natives-6.4.2.tgz#8c8b0066d352b2b5983c4ca3b47818b7b8f9bc1c"
+  integrity sha512-AXmPQc2nUFuh/xFC+Qsebg/eg3M+5GQV6MOzMvTBZ9N1w49XtZbtvEGAdISnZWERExNRcwH+j+zuSAGtm6Y2Yw==
   dependencies:
-    "@electron-forge/plugin-base" "7.6.1"
-    "@electron-forge/shared-types" "7.6.1"
+    "@electron-forge/plugin-base" "6.4.2"
+    "@electron-forge/shared-types" "6.4.2"
 
 "@electron-forge/plugin-base@6.4.2":
   version "6.4.2"
@@ -147,13 +147,6 @@
   integrity sha512-g6AAtQ7fZ94djBmwcnWasQ8xgaNVNjgaQ00GLK0NkmQ7n0PNbsnlMDuw9vdfTiL6WaLg5nxNSYc9bFJP/rtyeA==
   dependencies:
     "@electron-forge/shared-types" "6.4.2"
-
-"@electron-forge/plugin-base@7.6.1":
-  version "7.6.1"
-  resolved "https://registry.yarnpkg.com/@electron-forge/plugin-base/-/plugin-base-7.6.1.tgz#522e931e38afa7e20ad63a03537c60a494d2bebe"
-  integrity sha512-RWt+a8At55dVwEgr8BnnmBN05QzZq+DbOHNPeSJEM2d4ZyLUZXTkkwSF+ZMVk5mQCfIf75l+6BEzkXOcVvti2Q==
-  dependencies:
-    "@electron-forge/shared-types" "7.6.1"
 
 "@electron-forge/publisher-base@6.4.2":
   version "6.4.2"
@@ -1321,7 +1314,7 @@ electron-squirrel-startup@^1.0.0:
   dependencies:
     debug "^2.2.0"
 
-electron-winstaller@^5.3.0:
+electron-winstaller@^5.0.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/electron-winstaller/-/electron-winstaller-5.4.0.tgz#f0660d476d5c4f579fdf7edd2f0cf01d54c4d0b2"
   integrity sha512-bO3y10YikuUwUuDUQRM4KfwNkKhnpVO7IPdbsrejwN9/AABJzzTQ4GeHwyzNSrVO+tEH3/Np255a3sVZpZDjvg==
@@ -2213,9 +2206,9 @@ lodash.get@^4.0.0:
   integrity sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==
 
 lodash@^4.17.15, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.4:
-  version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
-  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+  version "4.18.1"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.18.1.tgz#ff2b66c1f6326d59513de2407bf881439812771c"
+  integrity sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==
 
 log-symbols@^4.0.0, log-symbols@^4.1.0:
   version "4.1.0"
